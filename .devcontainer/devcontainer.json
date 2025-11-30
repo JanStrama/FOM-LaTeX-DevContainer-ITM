@@ -1,0 +1,154 @@
+{
+  "name": "FOM LaTeX Thesis Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "DISPLAY": ""
+  },
+
+  "mounts": [
+    "type=tmpfs,target=/tmp,tmpfs-mode=1777"
+  ],
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop",
+        "ms-vscode.latex-support",
+        "valentjn.vscode-ltex",
+        "shardulm94.trailing-spaces",
+        "redhat.vscode-yaml",
+        "ms-vscode-remote.remote-containers"
+      ],
+      "settings": {
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "FOM Thesis Build",
+            "tools": [
+              "lualatex",
+              "biber",
+              "lualatex",
+              "lualatex"
+            ]
+          },
+          {
+            "name": "FOM Thesis English",
+            "tools": [
+              "lualatexmk_en",
+              "biber_en",
+              "lualatexmk_en",
+              "lualatexmk_en"
+            ]
+          }
+        ],
+        "latex-workshop.latex.tools": [
+          {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+              "--shell-escape",
+              "--interaction=nonstopmode",
+              "--file-line-error",
+              "%DOC%.tex"
+            ]
+          },
+          {
+            "name": "lualatexmk_en",
+            "command": "lualatex",
+            "args": [
+              "--shell-escape",
+              "--interaction=nonstopmode",
+              "--file-line-error",
+              "--jobname=thesis_englisch",
+              "\\def\\FOMEN{}\\input{%DOC%}"
+            ]
+          },
+          {
+            "name": "biber",
+            "command": "biber",
+            "args": [
+              "%DOCFILE%"
+            ]
+          },
+          {
+            "name": "biber_en",
+            "command": "biber",
+            "args": [
+              "thesis_englisch"
+            ]
+          }
+        ],
+        "latex-workshop.latex.clean.fileTypes": [
+          "*.aux",
+          "*.bcf",
+          "*.ilg",
+          "*.bbl",
+          "*.blg",
+          "*.idx",
+          "*.ind",
+          "*.lof",
+          "*.lot",
+          "*.out",
+          "*.toc",
+          "*.acn",
+          "*.acr",
+          "*.alg",
+          "*.glg",
+          "*.glo",
+          "*.gls",
+          "*.ist",
+          "*.fls",
+          "*.log",
+          "*.nlo",
+          "*.nls*",
+          "*.run.xml",
+          "*.fdb_latexmk",
+          "*.sub",
+          "*.suc",
+          "*.syc",
+          "*.sym"
+        ],
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.latex.autoBuild.run": "onFileChange",
+        "latex-workshop.showContextMenu": true,
+        "latex-workshop.intellisense.package.enabled": true,
+        "latex-workshop.message.error.show": false,
+        "latex-workshop.message.warning.show": false,
+        "latex-workshop.latex.rootFile.useSubFile": false,
+        "latex-workshop.latex.rootFile.doNotPrompt": false,
+        "cSpell.spellCheckOnlyWorkspaceFiles": true,
+        "cSpell.enableFiletypes": [
+          "latex",
+          "tex",
+          "bib",
+          "plaintext",
+          "markdown"
+        ],
+        "files.associations": {
+          "*.bib": "bibtex"
+        },
+        "editor.wordWrap": "on",
+        "editor.trimAutoWhitespace": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "git.enableSmartCommit": true,
+        "ltex.additionalRules.motherTongue": "de-DE",
+        "ltex.additionalRules.enablePickyRules": true,
+        "ltex.completionEnabled": true,
+        "ltex.language": "de-DE"
+      }
+    }
+  },
+
+  "postCreateCommand": ""
+
+}

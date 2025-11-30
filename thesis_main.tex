@@ -506,6 +506,17 @@
 %\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
 \printbibliography[type=online,heading=subbibliography,title={\headingNameInternetSources}]
 
+% KI-generierte Quellen als eigene Untersektion des Literaturverzeichnisses
+% Laut FOM Leitfaden müssen KI-generierte Inhalte transparent dokumentiert werden
+\newpage
+\printbibliography[keyword=ai-generated,heading=subbibliography,title={\langde{KI-generierte Quellen}\langen{AI-generated Sources}}]
+
+% Anhang mit KI-Prompts Dokumentation
+\input{kapitel/anhang/ki_prompts}
+
+% Anhang mit Code-Listings
+\input{kapitel/anhang/code_listings}
+
 \input{kapitel/anhang/erklaerung}
 \end{document}
 

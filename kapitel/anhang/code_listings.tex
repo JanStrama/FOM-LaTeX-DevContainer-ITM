@@ -1,0 +1,240 @@
+\newpage
+\section*{Anhang B: Code-Listing - Beispiel für Datenverarbeitungsskript}
+\addcontentsline{toc}{section}{Anhang B: Code-Listing - Beispiel für Datenverarbeitungsskript}
+
+Das folgende Python-Skript zeigt ein Beispiel für die automatisierte Verarbeitung und Analyse von Daten aus verschiedenen Dateiformaten. Das Skript demonstriert grundlegende Techniken der Datenextraktion, -analyse und -berichterstellung und kann als Vorlage für ähnliche Projekte angepasst werden.
+
+\begin{lstlisting}[language=Python, caption={data\_processing\_example.py - Beispiel für ein Datenverarbeitungsskript}, label=lst:data-processing]
+#!/usr/bin/env python3
+"""
+Beispiel für ein Datenverarbeitungsskript
+Verarbeitet verschiedene Dateiformate und generiert Analyseberichte
+"""
+
+import os
+import re
+import json
+import csv
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import List, Dict, Set, Tuple
+import logging
+from datetime import datetime
+
+# Logging konfigurieren
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+class DataProcessor:
+    """Verarbeitet Daten aus verschiedenen Quellen und generiert Analysen"""
+    
+    def __init__(self, input_directory: str, output_directory: str):
+        self.input_directory = Path(input_directory)
+        self.output_directory = Path(output_directory)
+        self.processed_data = defaultdict(list)
+        self.analysis_results = {}
+        
+    def load_data_from_files(self, file_pattern: str = "*.txt") -> Dict:
+        """Lädt Daten aus Dateien mit einem bestimmten Muster"""
+        data = {}
+        files = list(self.input_directory.glob(file_pattern))
+        logger.info(f"Found {len(files)} files to process")
+        
+        for file_path in files:
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+                    data[file_path.name] = content
+                    logger.info(f"Loaded data from {file_path.name}")
+            except Exception as e:
+                logger.error(f"Error loading {file_path.name}: {e}")
+        
+        return data
+    
+    def extract_patterns(self, text: str, patterns: Dict[str, str]) -> Dict:
+        """Extrahiert Muster aus Text mit regulären Ausdrücken"""
+        results = {}
+        
+        for pattern_name, pattern in patterns.items():
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            results[pattern_name] = matches
+            
+        return results
+    
+    def analyze_data(self, data: Dict) -> Dict:
+        """Analysiert die geladenen Daten"""
+        analysis = {
+            'total_files': len(data),
+            'file_sizes': {},
+            'pattern_counts': {},
+            'summary_statistics': {}
+        }
+        
+        # Dateigrößen analysieren
+        for filename, content in data.items():
+            analysis['file_sizes'][filename] = len(content)
+        
+        # Muster definieren und zählen
+        patterns = {
+            'dates': r'\d{4}-\d{2}-\d{2}',
+            'emails': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
+            'numbers': r'\b\d+\.?\d*\b',
+            'words': r'\b[A-Za-z]+\b'
+        }
+        
+        all_matches = defaultdict(list)
+        for filename, content in data.items():
+            for pattern_name, pattern in patterns.items():
+                matches = self.extract_patterns(content, {pattern_name: pattern})
+                all_matches[pattern_name].extend(matches[pattern_name])
+        
+        # Muster zählen
+        for pattern_name, matches in all_matches.items():
+            analysis['pattern_counts'][pattern_name] = Counter(matches)
+        
+        # Zusammenfassende Statistiken
+        analysis['summary_statistics'] = {
+            'total_words': len(all_matches['words']),
+            'unique_words': len(set(all_matches['words'])),
+            'total_numbers': len(all_matches['numbers']),
+            'total_dates': len(all_matches['dates']),
+            'total_emails': len(all_matches['emails'])
+        }
+        
+        return analysis
+    
+    def generate_report(self, analysis: Dict, output_file: str = None) -> str:
+        """Generiert einen Analysebericht"""
+        if output_file is None:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            output_file = f"analysis_report_{timestamp}.json"
+        
+        report = {
+            "analysis_date": datetime.now().isoformat(),
+            "input_directory": str(self.input_directory),
+            "output_directory": str(self.output_directory),
+            "results": analysis
+        }
+        
+        # Bericht speichern
+        output_path = self.output_directory / output_file
+        self.output_directory.mkdir(exist_ok=True)
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=2, ensure_ascii=False)
+        
+        logger.info(f"Report saved to {output_path}")
+        return str(output_path)
+    
+    def export_to_csv(self, data: Dict, output_file: str = None) -> str:
+        """Exportiert Daten in CSV-Format"""
+        if output_file is None:
+            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            output_file = f"exported_data_{timestamp}.csv"
+        
+        output_path = self.output_directory / output_file
+        self.output_directory.mkdir(exist_ok=True)
+        
+        # Beispiel für CSV-Export
+        with open(output_path, 'w', newline='', encoding='utf-8') as csvfile:
+            fieldnames = ['filename', 'word_count', 'line_count', 'size_bytes']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            
+            for filename, content in data.items():
+                writer.writerow({
+                    'filename': filename,
+                    'word_count': len(content.split()),
+                    'line_count': len(content.splitlines()),
+                    'size_bytes': len(content.encode('utf-8'))
+                })
+        
+        logger.info(f"CSV export saved to {output_path}")
+        return str(output_path)
+    
+    def create_visualization_data(self, analysis: Dict) -> Dict:
+        """Bereitet Daten für Visualisierungen auf"""
+        viz_data = {
+            'file_size_distribution': {},
+            'pattern_frequency': {},
+            'timeline_data': []
+        }
+        
+        # Dateigrößenverteilung
+        size_ranges = {'small': 0, 'medium': 0, 'large': 0}
+        for size in analysis['file_sizes'].values():
+            if size < 1000:
+                size_ranges['small'] += 1
+            elif size < 10000:
+                size_ranges['medium'] += 1
+            else:
+                size_ranges['large'] += 1
+        
+        viz_data['file_size_distribution'] = size_ranges
+        
+        # Musterhäufigkeit
+        for pattern_name, counts in analysis['pattern_counts'].items():
+            viz_data['pattern_frequency'][pattern_name] = {
+                'total_occurrences': sum(counts.values()),
+                'unique_values': len(counts)
+            }
+        
+        return viz_data
+
+
+def main():
+    """Hauptfunktion zur Ausführung der Datenverarbeitung"""
+    # Konfiguration
+    INPUT_DIR = "./input_data"
+    OUTPUT_DIR = "./output_results"
+    
+    # Initialisiere Processor
+    processor = DataProcessor(INPUT_DIR, OUTPUT_DIR)
+    
+    # Lade Daten
+    print("Loading data from files...")
+    data = processor.load_data_from_files("*.txt")
+    
+    if not data:
+        print("No data files found. Please check the input directory.")
+        return
+    
+    # Analysiere Daten
+    print("Analyzing data...")
+    analysis = processor.analyze_data(data)
+    
+    # Generiere Bericht
+    print("Generating analysis report...")
+    report_file = processor.generate_report(analysis)
+    
+    # Exportiere CSV
+    print("Exporting data to CSV...")
+    csv_file = processor.export_to_csv(data)
+    
+    # Erstelle Visualisierungsdaten
+    print("Preparing visualization data...")
+    viz_data = processor.create_visualization_data(analysis)
+    
+    # Zeige Zusammenfassung
+    print("\n" + "="*50)
+    print("DATA PROCESSING COMPLETE")
+    print("="*50)
+    print(f"Files processed: {analysis['total_files']}")
+    print(f"Total words: {analysis['summary_statistics']['total_words']}")
+    print(f"Unique words: {analysis['summary_statistics']['unique_words']}")
+    print(f"Numbers found: {analysis['summary_statistics']['total_numbers']}")
+    print(f"Dates found: {analysis['summary_statistics']['total_dates']}")
+    print(f"Emails found: {analysis['summary_statistics']['total_emails']}")
+    
+    print(f"\nAnalysis report: {report_file}")
+    print(f"CSV export: {csv_file}")
+    
+    return analysis
+
+
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
