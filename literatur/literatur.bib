@@ -1,181 +1,146 @@
-@book{Beckert.2012,
-	usera = {Mobile Lösungen},
+% Beispiel-Literaturverzeichnis mit verschiedenen Quelltypen
+% Diese Einträge dienen als Vorlage für die eigene Arbeit
+
+% Buch mit einem Autor
+@book{Mustermann.2020,
+	usera = {Grundlagen},
 	keyword = {primary},
-	author = {Beckert, André and Beckert, Sebastian and Escherich, Bernhard},
-	year = {2012},
-	title = {Mobile L{\"o}sungen mit SAP},
-	location = {Bonn},
+	author = {Mustermann, Max},
+	year = {2020},
+	title = {Grundlagen der modernen Informatik},
+	location = {Berlin},
 	edition = {1},
-	publisher = {Galileo Press},
-	isbn = {978-3836219310}
+	publisher = {Springer Vieweg},
+	isbn = {978-3662581234}
 }
 
-@book{Beckert.2012.1,
-	usera = {Mobile Lösungen},
+% Buch mit zwei Autoren
+@book{Schmidt.2019,
+	usera = {Softwareentwicklung},
 	keyword = {primary},
-	author = {Beckert, André and Beckert, Sebastian and Escherich, Bernhard},
-	year = {2012},
-	title = {Mobile L{\"o}sungen mit SAP},
-	location = {Bonn},
+	author = {Schmidt, Anna and Weber, Thomas},
+	year = {2019},
+	title = {Softwareentwicklung: Methoden und Werkzeuge},
+	location = {München},
+	edition = {2},
+	publisher = {Hanser},
+	isbn = {978-3446456789}
+}
+
+% Buch mit mehr als drei Autoren
+@book{Mueller.2018,
+	usera = {Datenanalyse},
+	keyword = {primary},
+	author = {Müller, Julia and Fischer, Klaus and Schneider, Petra and Wagner, Stefan},
+	year = {2018},
+	title = {Datenanalyse und maschinelles Lernen},
+	location = {Heidelberg},
 	edition = {1},
-	publisher = {Galileo Press},
-	isbn = {978-3836219310}
-}
-@book{Beckert.2012.2,
-	usera = {Mobile Lösungen2},
-	keyword = {primary},
-	author = {Beckert, André and Beckert, Sebastian and Escherich, Bernhard},
-	year = {2012},
-	title = {Mobile L{\"o}sungen mit SAP},
-	location = {Bonn},
-	edition = {1},
-	publisher = {Galileo Press},
-	isbn = {978-3836219310}
+	publisher = {dpunkt.verlag},
+	isbn = {978-3864901234}
 }
 
-@book{Tanenbaum.2003,
-	usera = {Computernetzwerke},
-	keyword = {primary},
-	author = {Tanenbaum, Andrew},
-	year = {2003},
-	title = {Computernetzwerke},
-	location = {M{\"u}nchen},
-	edition = {4},
-	publisher = {Pearson Studium},
-	isbn = {978-3827370464}
+% Online-Quelle mit Autor
+@online{website:example:tech,
+	usera = {Technologie},
+	title = {Moderne Webtechnologien im Überblick},
+	author = {Becker, Sascha},
+	url = {https://www.example-tech.com/webtechnologien},
+	date = {2021-03-15},
+	urltime = {14:30},
+	urldate = {2021-06-01}
 }
 
-% Werk mit einem hinterlegtem Autor, um das Verhalten von Biblatex zu demonstrieren
-@book{Balzert0.2008,
-	usera = {Wissenschaftliches Arbeiten},
-	keyword = {primary},
-	author = {Balzert, Helmut},
-	year = {2008},
-	title = {Wissenschaftliches Arbeiten: Wissenschaft, Quellen, Artefakte, Organisation, Pr{\"a}sentation},
-	location = {Herdecke [u.a.]},
-	publisher = {W3L-Verl.},
-	isbn = {978-3937137599},
-	series = {Soft skills}
+% Zeitschriftenartikel
+@article{Johnson.2021,
+	usera = {Forschung},
+	year = {2021},
+	volume = {45},
+	issue = {3},
+	pages = {234--251},
+	author = {Johnson, Robert},
+	title = {Neue Ansätze in der künstlichen Intelligenz},
+	journal = {Journal of Computer Science}
 }
 
-% Werk mit zwei hinterlegten Autoren, um das Verhalten von Biblatex zu demonstrieren
-@book{Balzert1.2008,
-	usera = {Wissenschaftliches Arbeiten},
-	keyword = {primary},
-	author = {Balzert, Helmut and Bendisch, Roman},
-	year = {2008},
-	title = {Wissenschaftliches Arbeiten: Wissenschaft, Quellen, Artefakte, Organisation, Pr{\"a}sentation},
-	location = {Herdecke [u.a.]},
-	publisher = {W3L-Verl.},
-	isbn = {978-3937137599},
-	series = {Soft skills}
+% Online-Quelle mit Organisation
+@online{OpenSourceManual,
+	usera = {Open Source},
+	title = {Open Source Software: A Comprehensive Guide},
+	author = {{Open Source Foundation}},
+	organization = {Open Source Foundation},
+	location = {San Francisco, CA},
+	date = {2020-11-20},
+	urldate = {2021-01-15},
+	urltime = {10:30},
+	url = {https://www.opensource.org/guide},
 }
 
-% Werk mit mehr als drei hinterlegten Autoren, um das Verhalten von Biblatex zu demonstrieren
-@book{Balzert2.2008,
-	usera = {Wissenschaftliches Arbeiten},
-	keyword = {primary},
-	author = {Balzert, Helmut and Bendisch, Roman and Kern, Uwe and Sch{\"a}fer, Christian and Schr{\"o}der, Marion and Zeppenfeld, Klaus},
-	year = {2008},
-	title = {Wissenschaftliches Arbeiten: Wissenschaft, Quellen, Artefakte, Organisation, Pr{\"a}sentation},
-	location = {Herdecke [u.a.]},
-	publisher = {W3L-Verl.},
-	isbn = {978-3937137599},
-	series = {Soft skills}
-}
-
-@online{website:angular:aboutAngular,
-	usera = {AngularJS},
-	title = "AngularJS - Was ist Angular?",
-	author = "Sascha Brink",
-	url = {https://angularjs.de/buch/was-ist-angularjs},
-	%Daten für den alten Stil
-	%year = "2014",
-	%note = "05.04.2015, 19:25",
-	%Daten für neuen 2018er Stil
-	date = {2018-12-20},
-	urltime = {23:30},
-	urldate = {2019-01-02}
-}
-
-@article{Decker2009,
-	usera = {Koalitionsaussagen},
-	year = {2009},
-	volume = {40},
-	issue = {2},
-	pages = {431--453},
-	author = {Decker, Frank},
-	title = {Koalitionsaussagen der Parteien vor Wahlen. Eine Forschungsskizze im Kontext des deutschen Regierungssystems},
-	journal = {Zeitschrift für Parlamentsfragen}
-}
-@online{RCoreManual,
-	usera = {R Core},
-	title = {R: A Language and Environment for Statistical Computing},
-	author = {{ R Core Team }},
-	organization = {R Foundation for Statistical Computing},
-	location = {Vienna, Austria},
-	date = {2018-12-20},
-	urldate = {2019-01-02},
-	urltime = {23:30},
-	url = {https://cran.r-project.org/doc/manuals/r-release/fullrefman.pdf},
-}
-
-@incollection{becker2016data,
-	author = {Becker, Wolfgang and Ulrich, Patrick and Botzkowski, Tim},
-	booktitle = {Data Analytics im Mittelstand},
+% Beitrag in Sammelwerk
+@incollection{hansen2020methods,
+	author = {Hansen, Michael and Richter, Lisa and Braun, Tim},
+	booktitle = {Moderne Forschungsmethoden},
 	edition = {1},
 	location = {Wiesbaden},
 	publisher = {Springer},
-	usera = {Data Analytics},
-	editor = {Becker, Wolfgang and Ulrich, Patrick},
-	title = {Management und Controlling im Mittelstand},
-	date = {2016},
+	usera = {Methoden},
+	editor = {Hansen, Michael and Richter, Lisa},
+	title = {Quantitative Methoden in der Informatik},
+	date = {2020},
 }
 
-@online{FOM,
-    usera = {Onlinecampus},
-    author = {{Hochschule für Oekonomie \& Management}},
-    title = {{Onlinecampus}},
-    url = {https://www.campus.bildungscentrum.de},
-    urldate = {2018-11-01},
-    year = {2018}
+% Online-Quelle ohne Datum
+@online{TechDocumentation,
+	usera = {Dokumentation},
+	author = {{Tech Company}},
+	title = {API-Dokumentation und Best Practices},
+	url = {https://api.example.com/documentation},
+	urldate = {2021-05-20},
 }
-@book{Wolff2017,
-    address = {Boston, Columbus, Indianapolis, New York},
-    author = {Wolff, Eberhard},
-    usera = {Microservices},
-    publisher = {Pearson Education},
-    title = {{Microservices}},
-    year = {2017}
-}
-% sortkey: damit nach "Lucke" und nicht nach "von Lucke" sortiert wird
-@incollection{Lucke2018,
-    editor = {Heuermann, Roland and Tomenendal, Matthias and Bressem, Christian},
-    author = {{von} Lucke, Jörn and Heuermann, Roland and Poder, Helmut and others},
-    sortkey= {Lucke, Jörn von},
-    usera = {Treiber},
+
+% Buch mit sortkey für besondere Namenskonventionen
+@incollection{vonLauter.2019,
+    editor = {Schulz, Martin and Meyer, Petra and Bauer, Christian},
+    author = {{von} Lauter, J{\"u}rgen and Schulz, Martin and others},
+    sortkey= {Lauter, Jürgen von},
+    usera = {Architektur},
     publisher = {Springer Gabler},
     location = {Berlin},
-    pages = {153-213},
-    series = {{Digitalisierung in Bund, Ländern und Gemeinden}},
-    title = {Treiber, Ratgeber, Meinungsmacher},
-    year = {2018}
+    pages = {89--134},
+    series = {{Moderne IT-Architekturen}},
+    title = {Architekturprinzipien und Design Patterns},
+    year = {2019}
 }
-@article{Wiederhofer2017,
-    author = {Wiederhofer, André},
-    usera = {IT-Flexibilität},
-    pages = {236-244},
-    journal = {{Informatik-Spektrum}},
-    title = {Steigerung der IT-Flexibilität},
-    volume = {40},
-    number = {3},
-    year = {2017}
+
+% Artikel in Fachzeitschrift
+@article{Weber.2020,
+    author = {Weber, Stefan},
+    usera = {Cloud Computing},
+    pages = {156--168},
+    journal = {{IT-Professional}},
+    title = {Cloud Computing: Strategien und Implementierung},
+    volume = {38},
+    number = {2},
+    year = {2020}
 }
-% Quelle ohne eigene Jahresangabe --> o. J. bzw. keine Datumsangabe
-@online{Belastingdienst,
-    usera = {{Bürgerservicenummer}},
-    author = {{Belastingdienst}},
-    title = {{Was ist eine Bürgerservicenummer (BSN)?}},
-    url = {https://www.belastingdienst.nl/wps/wcm/connect/bldcontentde/belastingdienst/privatpersonen/sonstige_themen/buergerservicenummer/was_ist_eine_buergerservicenummer_bsn},
-    urldate = {2019-02-26},
+
+% Beispiel für KI-generierte Inhalte
+@misc{KI_Assistant_2025_Analysis,
+	usera = {KI-generierte Inhalte},
+	author = {{AI Assistant}},
+	title = {Analyse und Verarbeitung von Forschungsdaten},
+	year = {2025},
+	month = {November},
+	note = {KI-Tool zur Unterstützung bei der Datenanalyse, Prompt siehe Anhang A.1},
+	keywords = {ai-generated}
+}
+
+@misc{KI_Assistant_2025_Code,
+	usera = {KI-generierte Inhalte},
+	author = {{AI Assistant}},
+	title = {Entwicklung eines Datenverarbeitungsskripts},
+	year = {2025},
+	month = {November},
+	note = {KI-Tool zur Code-Generierung, Prompt siehe Anhang A.2},
+	keywords = {ai-generated}
 }
