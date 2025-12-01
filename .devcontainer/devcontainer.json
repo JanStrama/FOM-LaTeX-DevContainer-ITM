@@ -152,6 +152,6 @@
   },
 
   // Git-Konfiguration nach dem Container-Start setzen
-  "postCreateCommand": "bash -c 'if [ -n \"$GIT_USER_NAME\" ]; then git config --global user.name \"$GIT_USER_NAME\"; fi && if [ -n \"$GIT_USER_EMAIL\" ]; then git config --global user.email \"$GIT_USER_EMAIL\"; fi'",
+  "postCreateCommand": "bash -c 'if [ -n \"$GIT_USER\" ]; then git config --global user.name \"$GIT_USER\"; fi && if [ -n \"$GIT_USER_EMAIL\" ]; then git config --global user.email \"$GIT_USER_EMAIL\"; fi'"
 
 }
