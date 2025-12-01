@@ -134,6 +134,37 @@ umgegangen wird\footcite[Vgl.][]{Belastingdienst}.
 Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \footcite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\footcite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a. 
 
 Die folgenden Fußnoten dienen dazu zu zeigen, dass die Nummern von zwei direkt aufeinanderfolgende Fußnoten mit Komma getrennt werden.\footcite[Vgl.][S.2]{Beckert.2012.1}\footcite[Vgl.][S. 1]{Lucke2018}
+
+\subsubsection{KI-generierte Quellen}
+Gemäß den FOM-Richtlinien müssen KI-generierte Inhalte transparent dokumentiert werden. Die Zitierung erfolgt über das Schlüsselwort \texttt{ai-generated} und wird in einem separaten Verzeichnis ausgegeben.
+
+\paragraph{Struktur für KI-Einträge:}
+\begin{lstlisting}[language=TeX]
+@misc{KI_Model_Jahr_Beschreibung,
+    usera = {KI-generierte Inhalte},
+    author = {{Modellname und Version}},
+    title = {Genaue Aufgabenbeschreibung},
+    year = {Jahr},
+    month = {Monat},
+    howpublished = {\url{plattform-url}},
+    note = {Generiert am TT.MM.JJJJ},
+    addendum = {Modellname und Version},
+    keywords = {ai-generated}
+}
+\end{lstlisting}
+
+\paragraph{Wichtige Hinweise:}
+\begin{itemize}
+    \item Jede KI-Nutzung muss im Literaturverzeichnis erfasst werden
+    \item Das verwendete Modell und die Version sind anzugeben
+    \item Der genaue Prompt oder die Aufgabenbeschreibung ist zu dokumentieren
+    \item KI-Quellen werden automatisch in einem separaten Verzeichnis aufgeführt
+    \item In der Eigenständigkeitserklärung ist die KI-Nutzung zu bestätigen
+\end{itemize}
+
+\paragraph{Beispiel für die Zitierung:}
+Die Erstellung der tabellarischen Taxonomie-Übersicht für die Literaturrecherche erfolgte durch Anthropic Claude 4 Sonnet\footcite[Vgl.][]{KI_Claude_2025_Taxonomie}. Dieser Eintrag wird im separaten Verzeichnis \enquote{KI-generierte Quellen} aufgeführt und nicht im regulären Literaturverzeichnis.
+
 \subsection{Abkürzungen}
 Abkürzungen werden mithilfe des Pakets Acronym eingebunden. Alle Abkürzungen sollten in der Datei acronyms.tex mithilfe des \begin{verbatim}
 	\acro
