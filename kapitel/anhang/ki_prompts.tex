@@ -1,10 +1,11 @@
 \newpage
-\section*{Anhang A: Dokumentation der KI-Prompts}
+\section*{Anhang KI: Dokumentation der KI-Prompts}
 \addcontentsline{toc}{section}{Anhang A: Dokumentation der KI-Prompts}
 
 Im Rahmen dieser Arbeit wurden KI-Tools zur Unterstützung bei verschiedenen Aufgaben eingesetzt. Gemäß den Richtlinien der FOM Hochschule werden hier alle verwendeten Prompts transparent dokumentiert.
-
-\subsection*{A.1 KI-Assistent - Tabellenerstellung}
+% TODO
+\todo{Clear up Appendix Example with instructions from Discord}
+\subsection*{KI.1 KI-Assistent - Tabellenerstellung}\label{KI:1}
 \textbf{Verwendungszweck:} Erstellung einer strukturierten Tabelle zur Übersicht der Forschungsmethodik
 
 \textbf{Prompt:}
@@ -18,89 +19,8 @@ Im Rahmen dieser Arbeit wurden KI-Tools zur Unterstützung bei verschiedenen Auf
 \textit{- Datenerhebung: Systematische Literaturrecherche}
 \textit{- Analysemethoden: Inhaltanalyse und Statistik}
 \textit{- Zielgruppe: Akademische Forscher und Praktiker}
-\textit{- Zeitrahmen: Repräsentative Quellen der letzten Jahre}"}
+\textit{- Zeitrahmen: Repräsentative Quellen der letzten Jahre}
 \end{quote}
 
-\subsection*{A.2 KI-Assistent - Concept Map Erstellung}
-\textbf{Verwendungszweck:} Systematische Entwicklung einer Concept Map mit Suchbegriffen für die Literaturrecherche
+\textbf{Antwort:}
 
-\textbf{Prompt:}
-\begin{quote}
-\textit{„Erstelle eine umfassende Concept Map für das Forschungsthema.}
-
-\textit{Die Concept Map soll:}
-\textit{- Alle relevanten Suchbegriffe und Konzepte für eine systematische Literaturrecherche enthalten}
-\textit{- In thematische Kategorien strukturiert sein}
-\textit{- Sowohl deutsche als auch englische Fachbegriffe berücksichtigen}
-\textit{- Praxisrelevante Technologien und Methoden einschließen}
-\textit{- Eine Grundlage für Boolean-Suchstrategien in wissenschaftlichen Datenbanken bieten}
-\textit{Anschließend formatiere die Ergebnisse als LaTeX-Tabelle"}
-\end{quote}
-
-\subsection*{A.3 KI-Assistent - Literaturrecherche und -filterung}
-\textbf{Verwendungszweck:} KI-gestützte Analyse und Filterung der Literaturquellen zur Identifikation der relevantesten Publikationen für die Forschungsfrage
-
-\textbf{Prompt:}
-\begin{quote}
-\textit{„Analysiere die BibTeX-Datei mit den Literaturrecherche-Ergebnissen und filtere nur die relevantesten Quellen für das Forschungsthema.}
-
-\textit{Bitte:}
-\textit{1. Lies die gesamte BibTeX-Datei}
-\textit{2. Analysiere jede Quelle basierend auf Titel und Abstract hinsichtlich der Relevanz}
-\textit{3. Behalte nur Einträge, die DIREKT relevant sind für das Forschungsthema}
-\textit{4. SCHLIESSE irrelevante Quellen aus}
-\textit{5. Erstelle eine neue BibTeX-Datei mit nur den relevanten Einträgen}
-\textit{6. Gib eine Zusammenfassung mit Statistiken und identifizierten Kategorien"}
-\end{quote}
-
-\textbf{Ergebnis der KI-Analyse:}
-\begin{itemize}
-    \item Anzahl der analysierten Quellen
-    \item Anzahl der selektierten hochrelevanten Quellen
-    \item Identifizierte Hauptkategorien
-    \item Ausgabedatei mit gefilterten Quellen
-\end{itemize}
-
-\subsection*{A.4 KI-Assistent - Automatisierungsskript}
-\textbf{Verwendungszweck:} Entwicklung eines Skripts zur automatisierten Datenverarbeitung und Analyse
-
-\textbf{Prompt:}
-\begin{quote}
-\textit{„Erstelle ein Skript zur automatisierten Verarbeitung von Forschungsdaten.}
-
-\textit{Das Skript soll:}
-\textit{1. Dateien aus einem Verzeichnis einlesen und verarbeiten}
-\textit{2. Daten extrahieren und analysieren}
-\textit{3. Ergebnisse mit bestehenden Daten abgleichen}
-\textit{4. Häufigkeiten und Muster identifizieren}
-\textit{5. Reports in verschiedenen Formaten generieren}
-
-\textit{Technische Anforderungen:}
-\textit{- Robuste Fehlerbehandlung}
-\textit{- Unterstützung verschiedener Dateiformate}
-\textit{- Logging für Nachvollziehbarkeit}
-\textit{- Export der Ergebnisse in strukturierten Formaten"}
-\end{quote}
-
-\textbf{Ergebnis der Skript-Anwendung:}
-\begin{itemize}
-    \item Anzahl der verarbeiteten Dateien
-    \item Anzahl der extrahierten Datenelemente
-    \item Identifizierte Muster und Häufigkeiten
-    \item Generierte Ausgabedateien
-\end{itemize}
-
-\subsection*{A.5 KI-Assistent - Textüberarbeitung und Formatierung}
-\textbf{Verwendungszweck:} Unterstützung bei der Textüberarbeitung und LaTeX-Formatierung
-
-\textbf{Prompt:}
-\begin{quote}
-\textit{„Überarbeite den folgenden Text und formatiere ihn korrekt in LaTeX.}
-
-\textit{Bitte:}
-\textit{1. Korrigiere Grammatik und Rechtschreibung}
-\textit{2. Verbessere die Satzstruktur und Lesbarkeit}
-\textit{3. Formatiere Zitate und Verweise korrekt}
-\textit{4. Stelle sicher, dass alle LaTeX-Befehle korrekt verwendet werden}
-\textit{5. Prüfe die Konsistenz der Formatierung"}
-\end{quote}

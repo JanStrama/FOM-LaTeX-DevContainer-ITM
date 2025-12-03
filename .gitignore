@@ -24,3 +24,11 @@
 
 # IDEs
 .texpadtmp/
+
+# Git credentials and config
+.git-credentials
+.gitconfig
+.gitconfig.local
+.env
+.env.local
+.env.*.local

@@ -1,3 +1,6 @@
+TODO Update for Dev Container Version with Details
+TODO Add AI Guidance in Dokumentation (waiting for Details on AI Appendix requirements)
+
 # LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management
 
 [![Build](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml/badge.svg)](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml)
@@ -124,7 +127,7 @@ TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
 ## Zitation
 Es gibt viele Zitationsstile, deshalb schaut ihr am besten in den für euch gültigen Leitfaden und sprecht dann die präferierte/vorgegebene Zitationsweise mit eurem Dozenten ab.
 
-Die Vorlage unterstützt verschiedene Zitationsstile, die über die Variable `\citationstyle` in der Datei thesis_main.tex ausgewählt werden können. Mögliche Werte sind `ieee`, `fom_2018` und `fom_alt`. Stellt sicher, dass der Wert der Variable korrekt gesetzt ist, um den gewünschten Zitationsstil zu aktivieren. 
+Die Vorlage unterstützt verschiedene Zitationsstile, die über die Variable `\citationstyle` in der Datei thesis_main.tex ausgewählt werden können. Mögliche Werte sind `ieee`, `fom_2018` und `fom_alt`. Stellt sicher, dass der Wert der Variable korrekt gesetzt ist, um den gewünschten Zitationsstil zu aktivieren.
 Sucht nach der Zeile `\newcommand{\citationstyle}{fom_2018}` im thesis_main.tex um Anpassungen wie folgt vorzunehmen
 
 Aktivieren des Zitationssils für den neuen (2018) FOM Leitfaden (per Default aktiv):
@@ -192,16 +195,16 @@ Des Weiteren werden die Modifikationen für BibLaTeX auskommentiert:
 ```
 %\input{skripte/modsBiblatex2018}
 ```
-Nach dem Auskommentieren der Modifikationen für das Literaturverzeichnis stimmt es leider nicht mehr zu 100% mit den Vorgaben überein, wobei der Leitfaden hier auch sehr vage formuliert ist. Am besten mit dem Dozenten sprechen, ob das BibLaTeX-Format passt. 
+Nach dem Auskommentieren der Modifikationen für das Literaturverzeichnis stimmt es leider nicht mehr zu 100% mit den Vorgaben überein, wobei der Leitfaden hier auch sehr vage formuliert ist. Am besten mit dem Dozenten sprechen, ob das BibLaTeX-Format passt.
 
 Durch das Auskommentieren der BibLaTeX Modifikationen werden im Anschluss folgende Zeilen hinzugefügt:
 ```
 %% et al. anstatt u. a. bei mehr als drei Autoren.
-\DefineBibliographyStrings{ngerman}{ 
-	andothers = {{et\,al\adddot}},             
+\DefineBibliographyStrings{ngerman}{
+	andothers = {{et\,al\adddot}},
 }
-\DefineBibliographyStrings{english}{ 
-	andothers = {{et\,al\adddot}},             
+\DefineBibliographyStrings{english}{
+	andothers = {{et\,al\adddot}},
 }
 ```
 
@@ -279,7 +282,7 @@ Folgendermaßen könnt ihr Quellcode einbauen:
 \lstinputlisting[language=JavaScript]{./Quellcode/Dateiname.js}
 ```
 
-Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut. 
+Für [Javascript](https://de.wikipedia.org/wiki/JavaScript) wurde eine eigene Definition erstellt und eingebaut.
 Für eine genauere Beschreibung aller im Standard verfügbaren Sprachen empfehlen wir folgenden Artikel: [LaTeX/Source Code Listings @ Wikibooks](http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings).
 
 ## Schriftarten
@@ -378,12 +381,12 @@ Wenn Du das Docker Image selbst bauen möchtest, kannst Du es mit dem nachfolgen
 docker build -t andygrunwald/fom-latex-template .
 ```
 
-## LaTeX mit Windows Subsystem for Linux kompilieren 
+## LaTeX mit Windows Subsystem for Linux kompilieren
 Eine mögliche Alternative zu Docker:
 
 1. WSL und Distribution installieren und konfigurieren (siehe [Microsoft Docs](https://docs.microsoft.com/en-US/windows/wsl/install-win10))
-1. Fork des Repositories erzeugen (siehe oben) und Dein Repository klonen (siehe [Github](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)) 
-1. TexLive und benötigte Pakete installieren 
+1. Fork des Repositories erzeugen (siehe oben) und Dein Repository klonen (siehe [Github](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository))
+1. TexLive und benötigte Pakete installieren
 ```
 sudo apt-get install texlive texlive-lang-german texlive-latex-extra texlive-bibtex-extra texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang-german texlive-luatex biber xz-utils
 ```
