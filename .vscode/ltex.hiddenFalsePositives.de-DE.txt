@@ -1,0 +1,1 @@
+{"rule":"F_ANSTATT_PH","sentence":"^\\QStruktur für KI-Einträge in der Bibliographie :\\E$"}
