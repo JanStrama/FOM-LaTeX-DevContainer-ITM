@@ -46,7 +46,7 @@ Dieses Package basiert auf python-pygments und unterstützt weit mehr Sprachkons
 Um das Paket zu verwenden muss es eingebunden werden und zusätzlich python-pygments installiert sein.
 (Dies ist mit im Dockerfile vorhanden. Für die anderen Compile-Methoden, wie das native verwenden von Tex Live findet sich hier die Installationsanleitung für das minted Paket: https://ctan.org/pkg/minted?lang=de)
 
-Damit das kompilieren ohne Python trotzdem möglich ist, ist die Funktion standardmäßig ausgebaut. Deshalb muss zusätzlich in der Datei \begin{verbatim}thesis_main.tex \usepackage{minted} \end{verbatim} wieder einkommentiert werden. 
+Damit das kompilieren ohne Python trotzdem möglich ist, ist die Funktion standardmäßig ausgebaut. Deshalb muss zusätzlich in der Datei \begin{verbatim}thesis_main.tex \usepackage{minted} \end{verbatim} wieder einkommentiert werden.
 
 Minted lässt sich dann ganz ähnlich zu lstlisting verwenden:
 \begin{lstlisting}
@@ -56,7 +56,7 @@ Minted lässt sich dann ganz ähnlich zu lstlisting verwenden:
 			return 0;
 		}
 	\end{minted}
-\end{lstlisting}	
+\end{lstlisting}
 
 Da der Pfad zu den Abbildungen im Hauptdokument definiert wurde, muss hier nur noch der Name des Bildes ohne Dateiendung stehen (sup).
 
@@ -110,10 +110,10 @@ Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entsch
 
 In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl.][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl.][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
 
-Laut Leitfaden sollen in einer Fußnote maximal 2 Autoren genannt werden. Bei Quellen mit drei oder 
+Laut Leitfaden sollen in einer Fußnote maximal 2 Autoren genannt werden. Bei Quellen mit drei oder
 mehr Verfassern wird nur der erste Autor aufgeführt, gefolgt von
 \enquote{et. al.} bzw. \enquote{u.a.}. Im Literaturverzeichnis hingegen müssen alle Autoren angegeben werden.
-Beim Zitieren dieser Werke werden in der Fußnote die Autoren korrekt genannt, wie in 
+Beim Zitieren dieser Werke werden in der Fußnote die Autoren korrekt genannt, wie in
 dieser Fußnote\footcite[Vgl.][S. 1]{Balzert0.2008},
 dieser Fußnote\footcite[Vgl.][S. 1]{Balzert1.2008} und
 dieser Fußnote\footcite[Vgl.][S. 1]{Balzert2.2008} zu sehen ist.
@@ -131,14 +131,14 @@ setzen.
 Diese Fussnote soll zeigen, wie mit einer Online-Quelle ohne Jahresangabe
 umgegangen wird\footcite[Vgl.][]{Belastingdienst}.
 
-Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \footcite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\footcite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a. 
+Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \footcite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\footcite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a.
 
 Die folgenden Fußnoten dienen dazu zu zeigen, dass die Nummern von zwei direkt aufeinanderfolgende Fußnoten mit Komma getrennt werden.\footcite[Vgl.][S.2]{Beckert.2012.1}\footcite[Vgl.][S. 1]{Lucke2018}
 
 \subsubsection{KI-generierte Quellen}
 Gemäß den FOM-Richtlinien müssen KI-generierte Inhalte transparent dokumentiert werden. Die Zitierung erfolgt über das Schlüsselwort \texttt{ai-generated} und wird in einem separaten Verzeichnis ausgegeben.
 
-\paragraph{Struktur für KI-Einträge:}
+\paragraph{Struktur für KI-Einträge in der Bibliographie :}
 \begin{lstlisting}[language=TeX]
 @misc{KI_Model_Jahr_Beschreibung,
     usera = {KI-generierte Inhalte},
@@ -157,7 +157,8 @@ Gemäß den FOM-Richtlinien müssen KI-generierte Inhalte transparent dokumentie
 \begin{itemize}
     \item Jede KI-Nutzung muss im Literaturverzeichnis erfasst werden
     \item Das verwendete Modell und die Version sind anzugeben
-    \item Der genaue Prompt oder die Aufgabenbeschreibung ist zu dokumentieren
+    \item Der genaue Prompt oder die Aufgabenbeschreibung ist in einem Anhang zu dokumentieren.
+    \item Die Dokumentation erfolgt nach Leitfaden mit Screenshots, sowohl des Prompts als auch des Resultates. Dies kann aber in absprache mit dem Betreuer auch anders defniniert werden
     \item KI-Quellen werden automatisch in einem separaten Verzeichnis aufgeführt
     \item In der Eigenständigkeitserklärung ist die KI-Nutzung zu bestätigen
 \end{itemize}
