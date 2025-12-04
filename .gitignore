@@ -25,5 +25,10 @@
 # IDEs
 .texpadtmp/
 
-# Enviroment Variables
+# Git credentials and config
+.git-credentials
+.gitconfig
+.gitconfig.local
 .env
+.env.local
+.env.*.local
