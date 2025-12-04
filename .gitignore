@@ -24,3 +24,6 @@
 
 # IDEs
 .texpadtmp/
+
+# Enviroment Variables
+.env

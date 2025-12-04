@@ -1,4 +1,4 @@
-%TC:ignore - ignoriert die folgnden Wörter beim Wordcount in Overleaf 
+%TC:ignore - ignoriert die folgnden Wörter beim Wordcount in Overleaf
 %-----------------------------------
 % Define document and include general packages
 %-----------------------------------
@@ -137,7 +137,7 @@
 
 \usepackage{url}
 \urlstyle{same}
-\newcommand{\citationstyle}{fom_2018} % Mögliche Werte: ieee, fom_2018, fom_alt
+\newcommand{\citationstyle}{ieee} % Mögliche Werte: ieee, fom_2018, fom_alt
 % Laden des entsprechenden Zitationsstils basierend auf der Variable \citationstyle
 \ifthenelse{\equal{\citationstyle}{ieee}}{
     % Einstellungen für IEEE-Zitationsstil
@@ -182,7 +182,7 @@
 			mincrossrefs = 1
 		]{biblatex}%iso dateformat für YYYY-MM-DD
         %weitere Anpassungen für BibLaTex
-        \input{skripte/modsBiblatex2018}
+        %\input{skripte/modsBiblatex2018}
     }{
         \ifthenelse{\equal{\citationstyle}{fom_alt}}{
             % Einstellungen für Alter Leitfaden
@@ -213,7 +213,7 @@
 \AtBeginBibliography{\singlespacing}
 
 %-----------------------------------
-% Silbentrennung (Vgl. Leitfaden S.17) 
+% Silbentrennung (Vgl. Leitfaden S.17)
 %-----------------------------------
 \usepackage{hyphsubst}
 \HyphSubstIfExists{ngerman-x-latest}{%
