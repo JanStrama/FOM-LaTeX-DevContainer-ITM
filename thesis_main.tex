@@ -182,7 +182,7 @@
 			mincrossrefs = 1
 		]{biblatex}%iso dateformat für YYYY-MM-DD
         %weitere Anpassungen für BibLaTex
-        %\input{skripte/modsBiblatex2018}
+        \input{skripte/modsBiblatex2018}
     }{
         \ifthenelse{\equal{\citationstyle}{fom_alt}}{
             % Einstellungen für Alter Leitfaden
@@ -203,6 +203,74 @@
             \PackageError{thesis_main}{Ungueltiger Wert fuer \noexpand\citationstyle: \citationstyle}{Bitte setzen Sie \noexpand\citationstyle auf ieee, fom_2018 oder fom_alt.}
         }
     }
+}
+% Dieser gesamte Block wird für KI-Zitate verwendet
+
+% Ausschreiben der Monatsnamen in Deutsch und Englisch
+\DeclareFieldFormat{monthname}{%
+  \langde{%
+    \ifcase #1\relax
+    \or Januar%
+    \or Februar%
+    \or März%
+    \or April%
+    \or Mai%
+    \or Juni%
+    \or Juli%
+    \or August%
+    \or September%
+    \or Oktober%
+    \or November%
+    \or Dezember%
+    \fi
+  }%
+  \langen{%
+    \ifcase #1\relax
+    \or january%
+    \or february%
+    \or march%
+    \or april%
+    \or may%
+    \or june%
+    \or july%
+    \or august%
+    \or september%
+    \or october%
+    \or november%
+    \or december%
+    \fi
+  }%
+}
+
+% Formatierung der Versionsnummer in eckigen Klammern
+\DeclareFieldFormat{version}{\mkbibbrackets{#1}}
+
+% Makro, um das Datum und die Version eines Software-Zitats auszugeben
+\newbibmacro*{printsoftwareversiondate}{
+  \langde{(Version vom \printfield{day}.\space\printfield[monthname]{month})}%
+  \langen{(\printfield[monthname]{month} \printfield{day} version)}%
+  \iffieldundef{version}
+    {}
+    {\space\printfield{version}}
+}
+
+% Treiber für @software, der das gewünschte Ausgabeformat erzeugt
+\DeclareBibliographyDriver{software}{%
+  \usebibmacro{begentry}%
+  \printnames{author}\adddot\space
+  \printtext[parens]{\printfield{year}}\adddot\space
+  \printfield{title}\space
+  \usebibmacro{printsoftwareversiondate}
+  \iffieldundef{note}
+    {}
+      {\printtext[parens]{\printfield{note}}\adddot\space}
+  \printtext[parens]{%
+    \begingroup
+    \DeclareFieldFormat{url}{\url{##1}}%
+    \printfield{url}%
+    \endgroup
+  }%
+  \usebibmacro{finentry}%
 }
 
 %Bib-Datei einbinden
@@ -435,24 +503,6 @@
 
 %TC:ignore - ignoriert die folgnden Wörter beim Wordcount in Overleaf
 
-%-----------------------------------
-% Apendix / Anhang
-%-----------------------------------
-\newpage
-\section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
-\addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
-
-\begin{appendices}
-% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
-\makeatletter
-\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
-\makeatother
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
-	\renewcommand{\thesection}{\AppendixName\ \arabic{section}}
-	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
-	\input{kapitel/anhang/anhang}
-\end{appendices}
-\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
 
 %-----------------------------------
 % Literaturverzeichnis
@@ -494,7 +544,7 @@
 % noch weitere Arten von Zusammenfassungen eines Literaturverzeichnisse zu
 % erzeugen.
 % Beispiel: [type=book,type=article]
-\printbibliography[nottype=online,notkeyword=ai-generated,heading=bibintoc,title={\langde{Literaturverzeichnis}\langen{Bibliography}}]
+\printbibliography[nottype=online, notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameBibliography}]
 
 % neue Seite für Internetquellen-Verzeichnis
 \newpage
@@ -503,21 +553,52 @@
 % Inhaltsverzeichnis, sondern gehören zum Literaturverzeichnis.
 % Die Option heading=bibintoc würde die Internetquelle als eigenen Eintrag im
 % Inhaltsverzeicnis anzeigen.
-%\printbibliography[type=online,heading=bibintoc,title={\headingNameInternetSources}]
-\printbibliography[type=online,notkeyword=ai-generated,heading=subbibliography,title={\headingNameInternetSources}]
+%\printbibliography[type=online,notkeyword=KI-Zitat,heading=bibintoc,title={\headingNameInternetSources}]
+\printbibliography[type=online, notkeyword=KI-Zitat,heading=subbibliography,title={\headingNameInternetSources}]
 
-% KI-generierte Quellen als eigene Untersektion des Literaturverzeichnisses
-% Laut FOM Leitfaden müssen KI-generierte Inhalte transparent dokumentiert werden
+
+
+% KI-Verzeichnis
 \newpage
-\printbibliography[keyword=ai-generated,heading=subbibliography,title={\langde{KI-generierte Quellen}\langen{AI-generated Sources}}]
+%\input{kapitel/anhang/ki_promts}
 
-% Anhang mit KI-Prompts Dokumentation
-\input{kapitel/anhang/ki_prompts}
+%\printbibliography[filter=KI-Zitate,heading=bibintoc,title={\headingNameKISources}]
+\printbibliography[keyword=KI-Zitat,heading=subbibliography,title={\headingNameKISources}]
 
-% Anhang mit Code-Listings
-\input{kapitel/anhang/code_listings}
+%Anhang nach Literaturverzeichnis
+%-----------------------------------
+% Apendix / Anhang
+%-----------------------------------
+\newpage
+\section*{\AppendixName} %Überschrift "Anhang", ohne Nummerierung
+\addcontentsline{toc}{section}{\AppendixName} %Den Anhang ohne Nummer zum Inhaltsverzeichnis hinzufügen
+
+\begin{appendices}
+% Nachfolgende Änderungen erfolgten aufgrund von Issue 163
+\makeatletter
+\renewcommand\@seccntformat[1]{\csname the#1\endcsname:\quad}
+\makeatother
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}} %
+	\renewcommand{\thesection}{\AppendixName\ \arabic{section}}
+	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
+	\input{kapitel/anhang/anhang}
+  \input{kapitel/anhang/ki_anhang}
+\end{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+
+
+
+
+
+
+
+
+
+
 
 \input{kapitel/anhang/erklaerung}
 \end{document}
+
+
 
 %TC:endignore - benötigt für Wordcount in Overleaf

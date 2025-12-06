@@ -20,7 +20,7 @@ Overleaf ist eine Online-Anwendung mit der Ihr direkt im Browser an eurer Thesis
 
 
 \subsection{Dokumentenklasse}
-Eigentlich hatte Prof. Finke empfohlen die Dokumentklassen \enquote{Book} oder \enquote{Report} für die Erstellung der Bachelor-Thesis zu verwenden, da diese über weitere Gliederungsebenen verfügen. Ich verwende dennoch eine leicht modifizierte Komaskript-Klasse \enquote{scrartcl}, mit der Erweiterung um eine Ebene. Siehe (skripte/weitereEbene.tex). Das Skript stammt irgendwo aus den Netz und übersteigt meine \LaTeX{}-Fähigkeiten. Dadurch kann ich über eine weitere Ebene in der Arbeit verfügen, ohne mich mit der Modifikation von Kapitel-Seiten rumschlagen~\footcite[Vgl. ][S. 5]{Tanenbaum.2003} zu müssen. Diese Quelle ist nur zur Demonstration und hat keinen inhaltlichen Bezug hierzu. Es werden übrigens nur die Quellen im Literaturverzeichnis angezeigt, die auch referenziert sind.
+Eigentlich hatte Prof. Finke empfohlen die Dokumentklassen \enquote{Book} oder \enquote{Report} für die Erstellung der Bachelor-Thesis zu verwenden, da diese über weitere Gliederungsebenen verfügen. Ich verwende dennoch eine leicht modifizierte Komaskript-Klasse \enquote{scrartcl}, mit der Erweiterung um eine Ebene. Siehe (skripte/weitereEbene.tex). Das Skript stammt irgendwo aus den Netz und übersteigt meine \LaTeX{}-Fähigkeiten. Dadurch kann ich über eine weitere Ebene in der Arbeit verfügen, ohne mich mit der Modifikation von Kapitel-Seiten rumschlagen~\cite[Vgl. ][S. 5]{Tanenbaum.2003} zu müssen. Diese Quelle ist nur zur Demonstration und hat keinen inhaltlichen Bezug hierzu. Es werden übrigens nur die Quellen im Literaturverzeichnis angezeigt, die auch referenziert sind.
 
 
 \subsection{Grafiken}
@@ -108,15 +108,15 @@ Quelle: Eigene Darstellung
 \subsubsection{Erklärung}
 Von den vielen verfügbaren Literatur-Paketen habe ich mich für Biblatex entschieden. Die Anforderungen der FOM sollten hiermit erfüllt sein. Ich habe bisher nur Einträge \enquote{@book} getestet. Wie immer steckt der Teufel hier im Detail und es wird sich später herausstellen, ob Biblatex eine gute Wahl war. Die Anpassungen hierfür liegen unter skripte/modsBiblatex. Ich verwende das Backend Biber, welches bib-Dateien in UTF-8 verarbeiten kann.
 
-In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\footcite[Vgl.][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\footcite[Vgl.][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
+In der für den Leitfaden 2018 aktualisierten Version sind außerdem Beispiele für \enquote{online},\cite[Vgl.][]{website:angular:aboutAngular} also Webseiten, und \enquote{article},\cite[Vgl.][S. 140]{Decker2009} also wissenschaftliche Artikel, enthalten.
 
 Laut Leitfaden sollen in einer Fußnote maximal 2 Autoren genannt werden. Bei Quellen mit drei oder
 mehr Verfassern wird nur der erste Autor aufgeführt, gefolgt von
 \enquote{et. al.} bzw. \enquote{u.a.}. Im Literaturverzeichnis hingegen müssen alle Autoren angegeben werden.
 Beim Zitieren dieser Werke werden in der Fußnote die Autoren korrekt genannt, wie in
-dieser Fußnote\footcite[Vgl.][S. 1]{Balzert0.2008},
-dieser Fußnote\footcite[Vgl.][S. 1]{Balzert1.2008} und
-dieser Fußnote\footcite[Vgl.][S. 1]{Balzert2.2008} zu sehen ist.
+dieser Fußnote\cite[Vgl.][S. 1]{Balzert0.2008},
+dieser Fußnote\cite[Vgl.][S. 1]{Balzert1.2008} und
+dieser Fußnote\cite[Vgl.][S. 1]{Balzert2.2008} zu sehen ist.
 In der Datei \texttt{literatur/literatur.bib} können daher alle Autoren ohne Bedenken erfasst werden.
 BibTeX findet die richtige Zitierweise automatisch.
 Die maximale Anzahl der angezeigten Autoren in Zitaten wird übrigens durch die Option \enquote{maxcitenames=3} des
@@ -131,12 +131,26 @@ setzen.
 Diese Fussnote soll zeigen, wie mit einer Online-Quelle ohne Jahresangabe
 umgegangen wird\footcite[Vgl.][]{Belastingdienst}.
 
-Diese Fußnote\footcite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \footcite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\footcite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a.
+Diese Fußnote\cite[Vgl.][S.1]{Beckert.2012} ist nur dazu da zu zeigen, wie mit mehreren Quellen des selben Autors aus dem selben Jahr umgegangen wird, wenn das Stichwort gleich bleibt \cite[Vgl.][S.2]{Beckert.2012.1} oder sich ändert\cite[Vgl.][S.3]{Beckert.2012.2}. Laut Leitfaden sollte bei gleichem Autor, Jahr und Stichwort ein Buchstabe an die Jahreszahl gehangen werden. Zum Beispiel 2012a.
 
-Die folgenden Fußnoten dienen dazu zu zeigen, dass die Nummern von zwei direkt aufeinanderfolgende Fußnoten mit Komma getrennt werden.\footcite[Vgl.][S.2]{Beckert.2012.1}\footcite[Vgl.][S. 1]{Lucke2018}
+Die folgenden Fußnoten dienen dazu zu zeigen, dass die Nummern von zwei direkt aufeinanderfolgende Fußnoten mit Komma getrennt werden.\cite[Vgl.][S.2]{Beckert.2012.1}\cite[Vgl.][S. 1]{Lucke2018}
 
-\subsubsection{KI-generierte Quellen}
-Gemäß den FOM-Richtlinien müssen KI-generierte Inhalte transparent dokumentiert werden. Die Zitierung erfolgt über das Schlüsselwort \texttt{ai-generated} und wird in einem separaten Verzeichnis ausgegeben.
+\subsection{KI-generierte Quellen}
+Werden für einzelne Textpassagen, Abbildungen oder sonstige Inhalte Tools Künstlicher Intelligenz genutzt, sind diese entsprechend kenntlich zu machen.
+
+Da der Einsatz von KI in wissenschaftlichen Arbeiten ein vergleichsweise neues und sich dynamisch entwickelndes Themenfeld darstellt, befinden sich offizielle Regelungen und institutionelle Sichtweisen hierzu noch im Wandel. Daher sollte die Verwendung von KI-basierten Werkzeugen sowie deren Transparenz in der Arbeit stets in Abstimmung mit dem*der Erstbetreuenden erfolgen. Dies umfasst sowohl die angemessene Kennzeichnung des KI-Einsatzes als auch die vollständige Dokumentation der verwendeten Promptes und erzielten Ergebnisse.
+
+Laut dem aktuellen Leitfaden\footnote{Leitfaden für wissenschaftliche Arbeiten, IT-Management \& Ingenieurwesen (Stand 03/24)} ist hierzu im Fließtext, analog zur Zitation mit Kurzbeleg, die Quelle zu benennen. Darin werden der Herausgeber des KI-Tools sowie das Jahr der Abfrage in Klammer und mit Komma getrennt angeben:
+
+\begin{itemize}
+	\item  (OpenAI, 2023)
+\end{itemize}
+
+Zur besseren Übersicht und Nachvollziehbarkeit sollte die Angabe noch mit der Zitation und somit dem Verweis auf die Quelle in KI Verzeichnis angegeben werden
+
+\begin{itemize}
+	\item  \kicite{KI_Claude_2025_Taxonomie}{Anthropic}{2025}
+\end{itemize}
 
 \paragraph{Struktur für KI-Einträge in der Bibliographie :}
 \begin{lstlisting}[language=TeX]
@@ -155,16 +169,12 @@ Gemäß den FOM-Richtlinien müssen KI-generierte Inhalte transparent dokumentie
 
 \paragraph{Wichtige Hinweise:}
 \begin{itemize}
-    \item Jede KI-Nutzung muss im Literaturverzeichnis erfasst werden
-    \item Das verwendete Modell und die Version sind anzugeben
-    \item Der genaue Prompt oder die Aufgabenbeschreibung ist in einem Anhang zu dokumentieren.
-    \item Die Dokumentation erfolgt nach Leitfaden mit Screenshots, sowohl des Prompts als auch des Resultates. Dies kann aber in absprache mit dem Betreuer auch anders defniniert werden
     \item KI-Quellen werden automatisch in einem separaten Verzeichnis aufgeführt
     \item In der Eigenständigkeitserklärung ist die KI-Nutzung zu bestätigen
 \end{itemize}
 
 \paragraph{Beispiel für die Zitierung:}
-Die Erstellung der tabellarischen Taxonomie-Übersicht für die Literaturrecherche erfolgte durch Anthropic Claude 4 Sonnet\footcite[Vgl.][]{KI_Claude_2025_Taxonomie}. Dieser Eintrag wird im separaten Verzeichnis \enquote{KI-generierte Quellen} aufgeführt und nicht im regulären Literaturverzeichnis.
+Die Erstellung der tabellarischen Taxonomie-Übersicht für die Literaturrecherche erfolgte durch Anthropic Claude 4 Sonnet\cite[Vgl.][]{KI_Claude_2025_Taxonomie}. Dieser Eintrag wird im separaten Verzeichnis \enquote{KI-generierte Quellen} aufgeführt und nicht im regulären Literaturverzeichnis.
 
 \subsection{Abkürzungen}
 Abkürzungen werden mithilfe des Pakets Acronym eingebunden. Alle Abkürzungen sollten in der Datei acronyms.tex mithilfe des \begin{verbatim}

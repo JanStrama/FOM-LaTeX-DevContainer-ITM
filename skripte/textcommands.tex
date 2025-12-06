@@ -10,12 +10,14 @@
 %----------------------------------
 % Information: OL bedeutet ohne Leerzeichen. Damit man dieses Command z. B. vor einem Komma oder vor einem anderen Zeichen verwenden kann. Dies ist ein Best-Practis von mir und hat sich sehr bewehrt.
 % Allgemein hat es sich bewert alle Wörter die man häufig schreibt und wahrscheinlich falsch oder unterscheidlich schreibt, als Textcommand zu hinterlegen.
-% 
+%
 %
 %
 \renewcommand{\symheadingname}{\langde{Symbolverzeichnis}\langen{List of Symbols}}
 \newcommand{\abbreHeadingName}{\langde{Abkürzungsverzeichnis}\langen{List of Abbreviations}}
+\newcommand{\headingNameBibliography}{\langde{Literaturverzeichnis}\langen{Bibliography}}
 \newcommand{\headingNameInternetSources}{\langde{Internetquellen}\langen{Internet sources}}
+\newcommand{\headingNameKISources}{\langde{KI-Verzeichnis}\langen{AI Bibliography}}
 \newcommand{\AppendixName}{\langde{Anhang}\langen{Appendix}}
 \newcommand{\vglf}{\langde{Vgl.}\langen{compare}}
 \newcommand{\pagef}{\langde{S. }\langen{p. }}
@@ -39,6 +41,10 @@
 \newcommand{\ggf}{\ggfol\ }
 \newcommand{\unodol}{und/oder}
 \newcommand{\unod}{\unodol\ }
+% added for citing AI Sources correctly for the FOM Guidance
+% example \kicite{KI_Claude_2025_Taxonomie}{Anthropic}{2025}
+
+\newcommand{\kicite}[3]{\cite{#1} (#2, #3)}
 
 %----------------------------------
 % project individual textCommands
