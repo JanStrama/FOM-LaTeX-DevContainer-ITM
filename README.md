@@ -1,7 +1,6 @@
-TODO Update for Dev Container Version with Details
-TODO Add AI Guidance in Dokumentation (waiting for Details on AI Appendix requirements)
-
 # LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management
+
+**Diese erweiterte Vorlage basiert auf dem hervorragenden Foundation-Work von [Andy Grünwald](https://github.com/andygrunwald/FOM-LaTeX-Template) und integriert wertvolle AI-Bibliographie-Anpassungen aus der Community von [FOM-MUC-unofficial](https://github.com/FOM-MUC-unofficial/FOM-LaTeX-Template) sowie [MucPeet](https://github.com/MucPeet/FOM-LaTeX-Template).**
 
 [![Build](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml/badge.svg)](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml)
 
@@ -11,6 +10,43 @@ Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](
 
 Diese Vorlage hat weder einen Anspruch auf Richtigkeit, noch auf Vollständigkeit.
 Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vorlage zu verbessern](#ich-möchte-mithelfen-diese-vorlage-zu-verbessern)).
+
+---
+
+## Unterschiede zur Original-Vorlage
+
+Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbeiten, IT-Management & Ingenieurwesen (Stand 03/24)" und nutzt das IEEE-Zitationsformat. Die wichtigsten Unterschiede zur Original-Vorlage sind:
+
+### 1. IEEE-Zitationsformat
+- Standardmäßig aktiviertes IEEE-Zitationsformat für den IT-Management-Bereich
+- Automatische Anpassung der BibLaTeX-Konfiguration
+- Unterstützung für direkte und indirekte Zitate im IEEE-Stil
+
+### 2. KI-Bibliographie-Einträge
+- Neue `@software`-Einträge in [`literatur/literatur.bib`](./literatur/literatur.bib) für KI-Tools wie ChatGPT
+- Strukturierte Metadaten für KI-generierte Inhalte
+
+
+### 3. KI-Anhang
+- Neuer Anhang [`kapitel/anhang/ki_anhang.tex`](./kapitel/anhang/ki_anhang.tex) zur Dokumentation von KI-Prompts
+- Strukturierte Abbildungsnachweise für KI-generierte Inhalte
+- Transparente Dokumentation gemäß FOM-Richtlinien
+
+### 4. DEV Container-Unterstützung
+- Vollständige Entwicklungsumgebung in [`.devcontainer/`](./.devcontainer/)
+- VS Code mit LaTeX Workshop, LTeX-Grammatikprüfung und Git-Integration
+- Standardisierte Arbeitsumgebung ohne lokale LaTeX-Installation
+
+### 5. KI-Nachweis-Ordner
+- [`abbildungen/ki_belege/`](./abbildungen/ki_belege/) für Screenshots und PDF-Nachweise
+- [`fluechtige_quellen/ki_prompt/`](./fluechtige_quellen/ki_prompt/) für Prompt-Dokumentation
+- Automatisierte Konvertierung durch [`convert_to_pdf.sh`](./convert_to_pdf.sh)
+
+### 6. Exporter-Plugin-Empfehlungen
+- Claude Exporter für strukturierte Markdown-Exporte
+- ChatGPT Exporter für HTML-Exporte mit Screenshots
+- Zotero Plugin Webseiten Snapshots in HTML die dann auch umgewandelt werden können (Weniger "hübsch") in der Arbeit aber gut in den flüchtigen Quellen nutzbar
+- Nahtlose Integration in den KI-Nachweis-Prozess
 
 ---
 
@@ -170,6 +206,8 @@ Beispiel für die Verwendung von Textcommands (der Output sieht wie oben aus):
 
 Der IEEE Zitationsstil wird hauptsächlich in technischen Studiengängen verwendet und ist ein sehr einfacher Zitationsstil, da hier nicht auf Dinge wie z.B. "vgl."/"ebd." geachtet werden muss. Ein direktes Zitat steht in Anführungszeichen. Wird ohne Anführungszeichen zitiert weiß man, dass es ein indirektes Zitat ist ("vgl." kann dann weg gelassen werden). Normalerweise müssten auch keine Seitenzahlen angegeben werden, jedoch steht im aktuellen Leitfaden des Hochschulbereichs IT-Management, dass bei jeglicher Zitationsweise die Seitenzahl anzugeben ist, deshalb auch bei IEEE.
 
+**In dieser Vorlage ist IEEE bereits als Standard aktiviert!**
+
 Aktivieren des IEEE Zitationssils wie folgt:
 ```
 \newcommand{\citationstyle}{ieee}
@@ -242,6 +280,34 @@ Damit das Symbolverzeichnis nicht mehr angezeigt wird, folgendes auskommentieren
 \addcontentsline{toc}{section}{Abkürzungsverzeichnis}
 ```
 
+## KI-Quellen im Literaturverzeichnis
+
+Diese Vorlage unterstützt die Zitation von KI-generierten Inhalten gemäß IEEE-Standard. In der [`literatur/literatur.bib`](./literatur/literatur.bib) sind bereits Beispiele für KI-Quellen enthalten:
+
+```bibtex
+@software{KI_ChatGPT_2025_Beispiel,
+	author = {OpenAI},
+	title = {Beispiel des Einsatzes von ChatGPT mit Screenshots},
+	date = {2025-12-07},
+	version = {ChatPGT 2025-12-07},
+	url = {https://chatgpt.com/},
+	keywords = {KI-Zitat},
+	howpublished = {\url{https://chatgpt.com/}},
+	note = {Detailierter Prompt und Antwort Siehe Anhang A.1}}
+}
+```
+
+**Verwendung im Text:**
+```latex
+\cite[S.~99]{KI_ChatGPT_2025_Beispiel}
+```
+
+**Wichtige Hinweise für KI-Zitate:**
+- Immer das genaue Datum und die Version der KI angeben
+- Den verwendeten Prompt im Anhang dokumentieren
+- Screenshots oder Exporte als Nachweis im Anhang einfügen
+- Die URL zur KI-Plattform immer angeben
+
 ## Literaturverzeichnis
 
 Einige Professoren bevorzugen ein sortiertes (Webseite, Buch, Artikel...) Literaturverzeichnis.
@@ -271,6 +337,104 @@ Sollte ein Sperrvermerk für die Arbeit notwendig sein, so kann dieser durch Ein
 ```
 
 Die Angaben zu Titel der Arbeit und Name der Firma werden dabei aus den Metadaten entnommen.
+
+## KI-Nachweis-Management
+
+Diese Vorlage bietet ein komplettes System zur Verwaltung von KI-generierten Inhalten und deren Nachweis.
+
+### Empfohlene Exporter-Plugins
+
+Für die effiziente Dokumentation von KI-Sessions werden folgende Browser-Extensions empfohlen:
+
+**Claude Exporter**
+- Exportiert Claude-Sessions als strukturierte Markdown-Dateien
+- Erhält Formatierung und Code-Blöcke
+- Kompatibel mit `convert_to_pdf.sh`
+- Verfügbar für Chrome und Firefox
+
+**ChatGPT Exporter**
+- Exportiert ChatGPT-Sessions als HTML-Dateien mit Screenshots
+- Enthält Zeitstempel und Metadaten
+- Unterstützt Bild- und Datei-Uploads
+- Ideal für visuelle Nachweise
+
+**Verwendung der Exporter:**
+1. Installiere die entsprechende Extension in deinem Browser
+2. Führe die KI-Session durch
+3. Exportiere die Session nach Abschluss
+4. Speichere die Export-Datei in `fluechtige_quellen/ki_prompt/`
+5. Führe `./convert_to_pdf.sh` aus für die Konvertierung
+6. Füge den Nachweis im KI-Anhang hinzu
+
+### Ordnerstruktur
+
+**[`abbildungen/ki_belege/`](./abbildungen/ki_belege/)**
+- Speicherort für Screenshots und PDF-Exporte von KI-Sessions
+- Automatische Verknüpfung mit dem KI-Anhang
+- Unterstützte Formate: PNG, JPG, PDF
+
+**[`fluechtige_quellen/ki_prompt/`](./fluechtige_quellen/ki_prompt/)**
+- Temporäre Speicherung von Prompt-Dokumentationen
+- Markdown- und HTML-Dateien von KI-Exportern
+- Quelle für die automatische PDF-Konvertierung
+
+### Automatische Konvertierung
+
+Das Skript [`convert_to_pdf.sh`](./convert_to_pdf.sh) konvertiert automatisch KI-Exporte in PDF-Dateien:
+
+**Verwendung:**
+```bash
+./convert_to_pdf.sh
+```
+
+**Funktionen:**
+- Konvertiert Markdown-Dateien mit Pandoc
+- Konvertiert HTML-Dateien mit wkhtmltopdf
+- Automatische Dateinamen-Normalisierung
+- Farbliche Logging-Ausgabe
+- Fehlerbehandlung und Tool-Prüfung
+
+**Benötigte Tools:**
+```bash
+# Ubuntu/Debian
+sudo apt-get install pandoc wkhtmltopdf
+
+# macOS
+brew install pandoc wkhtmltopdf
+```
+
+### KI-Anhang
+
+Diese Vorlage enthält einen speziellen Anhang für die Dokumentation von KI-generierten Inhalten in [`kapitel/anhang/ki_anhang.tex`](./kapitel/anhang/ki_anhang.tex).
+
+**Struktur des KI-Anhangs:**
+- **A.1** Dokumentation von ChatGPT-Sessions mit Screenshots
+- **A.2** Dokumentation von Claude-Sessions mit PDF-Exporten
+- **Weitere Abschnitte** für zusätzliche KI-Tools
+
+**Aktivierung des KI-Anhangs:**
+```latex
+\input{kapitel/anhang/ki_anhang}
+```
+
+**Inhalt der Dokumentation:**
+- Verwendungsweck der KI-Anwendung
+- Detaillierte Beschreibung des Prompts
+- Screenshot oder PDF-Export der KI-Antwort
+- Verknüpfung mit dem Bibliographie-Eintrag
+
+**Beispiel für die Einbindung:**
+```latex
+\subsubsection*{A.1 Beispiel ChatGPT mit Screenshot}
+\textbf{Verwendungszweck:} Beispiel des Einsatzes von ChatGPT mit Screenshots.
+
+\begin{figure}[H]
+    \centering
+    \caption[]{Beispiel des Einsatzes von ChatGPT mit Screenshots}
+    \label{fig:Beispielbild}
+    \includegraphics[width=1\textwidth]{abbildungen/ki_belege/ChatGPT_beispiel_2025-12-07 10-28-58}
+\end{figure}
+```
 
 ## Quellcode einbinden
 
@@ -314,16 +478,47 @@ export PLANTUML_JAR='$HOME/bin/plantuml/plantuml.jar'
 export GRAPHVIZ_DOT='/usr/local/bin/dot'
 ```
 
+## DEV Container - Standardisierte Entwicklungsumgebung
+
+Diese Vorlage bietet eine vollständige Entwicklungsumgebung über [DEV Container](https://containers.dev/). Dies ermöglicht eine konsistente Arbeitsumgebung ohne lokale LaTeX-Installation.
+
+**Vorteile des DEV Containers:**
+- Vollständige LaTeX-Umgebung mit allen benötigten Paketen
+- VS Code mit vorinstallierten Extensions (LaTeX Workshop, LTeX, etc.)
+- Automatische Git-Konfiguration
+- Standardisierte Build-Prozesse
+- Keine Konflikte mit lokalen Installationen
+
+**Verwendung:**
+1. Öffne das Projekt in VS Code
+2. Installiere die "Remote - Containers" Extension
+3. Drücke `Ctrl+Shift+P` und wähle "Reopen in Container"
+4. Warte bis der Container aufgebaut ist
+5. Beginne sofort mit dem Schreiben
+
+**Vorinstallierte Extensions:**
+- **LaTeX Workshop** - LaTeX-Kompilierung und Vorschau
+- **LTeX** - Offline Grammatik- und Rechtschreibprüfung
+- **Git Integration** - Vollständige Git-Unterstützung
+- **Trailing Spaces** - Erkennung von überflüssigen Leerzeichen
+
+**Umgebungsvariablen:**
+Erstelle eine `.env`-Datei basierend auf `.env.example` für die Git-Konfiguration:
+```bash
+GIT_USER_NAME=Dein Name
+GIT_USER_EMAIL=deine.email@example.com
+```
+
 ## LaTeX zu PDF kompilieren
 
-Wir empfehlen das Dokument mit Docker (siehe unten) zu kompilieren.
+Wir empfehlen das Dokument mit dem DEV Container (siehe oben) oder Docker (siehe unten) zu kompilieren.
 
 Alternativ kann auch über die Ausführung der Skripte kompiliert werden, dafür müssen aber die unten beschriebenen [LaTeX-Pakete](#latex-pakete) installiert sein.
 Unter **Windows** muss dafür die beiliegende `compile.bat` ausführen.
 Benutzer von **macOS** und **Linux** verwenden bitte die ```compile.sh```.
 
 
-Wenn das Kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-Versionen oder nutzt Docker.
+Wenn das Kompilieren nicht ohne Fehler möglich ist, kontrolliert bitte ganz genau eure LaTeX-Versionen oder nutzt Docker/DEV Container.
 
 
 ### Docker unter Linux / macOS / Windows

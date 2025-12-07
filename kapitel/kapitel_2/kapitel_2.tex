@@ -149,22 +149,30 @@ Laut dem aktuellen Leitfaden\footnote{Leitfaden für wissenschaftliche Arbeiten,
 Zur besseren Übersicht und Nachvollziehbarkeit sollte die Angabe noch mit der Zitation und somit dem Verweis auf die Quelle in KI Verzeichnis angegeben werden
 
 \begin{itemize}
-	\item  \kicite{KI_Claude_2025_Taxonomie}{Anthropic}{2025}
+	\item  \kicite{KI_ChatGPT_2025_Beispiel}{ChatGPT}{2025}
 \end{itemize}
 
-\paragraph{Struktur für KI-Einträge in der Bibliographie :}
+Zur vereinfachung des Zitierens wurde ein Zusätzlicher Zitat Befehl in textcommands mit aufgenommen:
+
 \begin{lstlisting}[language=TeX]
-@misc{KI_Model_Jahr_Beschreibung,
-    usera = {KI-generierte Inhalte},
-    author = {{Modellname und Version}},
-    title = {Genaue Aufgabenbeschreibung},
-    year = {Jahr},
-    month = {Monat},
-    howpublished = {\url{plattform-url}},
-    note = {Generiert am TT.MM.JJJJ},
-    addendum = {Modellname und Version},
-    keywords = {ai-generated}
+kicite{KI_ChatGPT_2025_Beispiel}{ChatGPT}{2025}
+\end{lstlisting}
+
+
+\paragraph{Struktur für KI-Einträge in der Bibliographie :}
+Die KI Zitate werden  mit der folgenden Struktur ins Literaturverzeichnis aufgenommen
+\begin{lstlisting}[language=TeX]
+@software{KI_Claude_2025_Taxonomie,
+	author = {Anthropic},
+	title = {Erstellung einer tabellarischen Taxonomie-Übersicht für Literaturrecherche},
+	date = {2025-08-02},
+	version = {Claude 4 Sonne},
+	url = {https://claude.ai},
+	keywords = {KI-Zitat},
+	howpublished = {\url{claude.ai}},
+	note = {Detailierter Prompt und Antwort Siehe Anhang A: KI.1}
 }
+
 \end{lstlisting}
 
 \paragraph{Wichtige Hinweise:}

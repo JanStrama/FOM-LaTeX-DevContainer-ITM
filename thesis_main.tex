@@ -412,6 +412,9 @@
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblack, citecolor=darkblack, menucolor=darkblack, urlcolor=darkblack, linktoc=all, bookmarksnumbered=false, pdfpagemode=UseOutlines, pdftoolbar=true}
 \urlstyle{same}%gleiche Schriftart für den Link wie für den Text
 
+% Einbinden von PDFs (für den KI Anhang)
+\usepackage{pdfpages}
+
 %-----------------------------------
 % Start the document here:
 %-----------------------------------
@@ -583,17 +586,9 @@
 	\renewcommand\thesubsection{\AppendixName\ \arabic{section}.\arabic{subsection}}
 	\input{kapitel/anhang/anhang}
   \input{kapitel/anhang/ki_anhang}
+  \input{kapitel/anhang/code_listings.tex}
 \end{appendices}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
-
-
-
-
-
-
-
-
-
 
 
 \input{kapitel/anhang/erklaerung}

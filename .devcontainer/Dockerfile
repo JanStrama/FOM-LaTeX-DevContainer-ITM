@@ -15,6 +15,8 @@ RUN apt-get update \
 		xz-utils \
 		python3 \
 		python3-pygments \
+		pandoc \
+		wkhtmltopdf \
 		--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
