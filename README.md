@@ -41,14 +41,20 @@ Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbe
 - Automatisierte Konvertierung durch [`convert_to_pdf.sh`](./convert_to_pdf.sh)
 
 ### 6. Exporter-Plugin-Empfehlungen
+Die folgenden Plugins für Firefox haben sich als recht gut im export der Chathistorie erwiesen um sie einfach in den Anhang einzubinden
 - Claude Exporter für strukturierte Markdown-Exporte
 - ChatGPT Exporter für HTML-Exporte mit Screenshots
 - Zotero Plugin Webseiten Snapshots in HTML die dann auch umgewandelt werden können (Weniger "hübsch") in der Arbeit aber gut in den flüchtigen Quellen nutzbar
-- Nahtlose Integration in den KI-Nachweis-Prozess
 
 ---
 
-## Inhaltsverzeichnis
+## KI Nutzungs-Flow
+
+KI Einsatz --> Download und Speichern im ./fluechtige_quellen/ki_prompt/ --> convert_to_pdf.sh ausführen (speichert pdf in ./abbildungen/ki_belege/)  --> KI einsatz in literatur.bib und KI Anhang aufführen (siehe Beispieldaten im pdf und tex files)
+
+---
+
+## Inhaltsverzeichnis 8aus dem Original Repo)
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
     1. [Klassischer Download](#klassischer-download)
