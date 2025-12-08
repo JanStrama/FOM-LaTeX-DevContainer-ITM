@@ -2,8 +2,6 @@
 
 **Diese erweiterte Vorlage basiert auf dem hervorragenden Foundation-Work von [Andy Grünwald](https://github.com/andygrunwald/FOM-LaTeX-Template) und integriert wertvolle AI-Bibliographie-Anpassungen aus der Community von [FOM-MUC-unofficial](https://github.com/FOM-MUC-unofficial/FOM-LaTeX-Template) sowie [MucPeet](https://github.com/MucPeet/FOM-LaTeX-Template).**
 
-[![Build](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml/badge.svg)](https://github.com/andygrunwald/FOM-LaTeX-Template/actions/workflows/Check.yml)
-
 Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-, Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 
 Wie das **Ergebnis** aussieht, könnt ihr euch in der Datei [*thesis_main.pdf*](./thesis_main.pdf) ansehen.

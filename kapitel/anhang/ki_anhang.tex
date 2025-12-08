@@ -1,29 +1,37 @@
-\newpage
-\subsection*{Anhang A: Dokumentation der KI-Prompts}
-\addcontentsline{toc}{section}{Anhang KI: Dokumentation der KI-Prompts}
+\section{Dokumentation der KI-Prompts}
 
 Im Rahmen dieser Arbeit wurden KI-Tools zur Unterstützung bei verschiedenen Aufgaben eingesetzt. Gemäß den Richtlinien der FOM Hochschule werden hier alle verwendeten Prompts transparent dokumentiert.
 
-\subsubsection*{A.1 Beispiel ChaGPT mit Screenshot}\
+\subsection{Beispiel ChaGPT mit Screenshot}
 \textbf{Verwendungszweck:} Beispiel des Einsatzes von ChatGPT mit Screenshots.
 
 \begin{figure}[H]
     \centering
     \caption[]{Beispiel des Einsatzes von ChatGPT mit Screenshots}
-	\label{fig:Beispielbild}
+	\label{fig:Beispiel ChaGPT mit Screenshot}
     \includegraphics[width=1\textwidth]{abbildungen/ki_belege/ChatGPT_beispiel_2025-12-07 10-28-58}
 \end{figure}
 
 
-\subsubsection*{A.2 Beispiel Claude mit Markdown Export zu PDF}\
-\textbf{Verwendungszweck:} Beispiel des Einsatzes von Claude mit Markdown export zu PDF.
+\newpage
+\subsection{Beispiel Claude mit Markdown Export zu PDF}\label{KI1}
+\textbf{Verwendungszweck:} Beispiel des Einsatzes von Claude mit Markdown-Export zu PDF.
 
+\textbf{KI-Modell:} Claude Sonnet 4.5 (Anthropic) \\
+\textbf{Datum:} 7. Dezember 2025 \\
+\textbf{Thema:} Beispiel Einsatz KI Einsatz in Wisscenschaftlichen Arbeiten \\
+\textbf{Literatur:} \kicite{KI_Claude_2025_Beispiel}{Claude Sonnet 4.5}{2025}
+
+%ACHTUNG Die Scale und Offset einstellungen sind Feinustiert auf das aktuelle Format. Wenn ihr was ändert oder es "shief aussieht bitte in der thesis_main.tex die Zeilen "\usepackage{showframe}" & "\usepackage[showboxes]{textpos}" suchen und auskommentieren. Damit werden dann die "boxen" um die Elemente angezeigt und ihr könnt das noch mal fine tunen
+
+\newcounter{includepdfpage}
 \includepdf[
     pages=-,
-    pagecommand={
-        \thispagestyle{fancy}
-        \stepcounter{page}  % Seitenzähler weiterzählen
-    },
-    scale=0.9,
-    offset=0 -1.5cm
+    pagecommand={\stepcounter{includepdfpage}\ref{KI1} Chatverlauf Seite \theincludepdfpage\thispagestyle{fancy}},
+    frame=true,
+    scale=0.715,
+    offset=10mm 11.5mm
+    landscape=false
 ]{abbildungen/ki_belege/claude_prompt_als_pdf_exportieren.pdf}
+
+

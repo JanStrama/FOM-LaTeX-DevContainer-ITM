@@ -52,7 +52,13 @@
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
-%\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
+\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
+
+\newenvironment{chat}{
+    \begin{quote}\ttfamily\small
+}{
+    \end{quote}
+}
 \usepackage[scaled=0.9]{helvet} % Behebt, zusammen mit Package courier, pixelige Überschriften. Ist, zusammen mit mathptx, dem times-Package vorzuziehen. Details: https://latex-kurs.de/fragen/schriftarten/Times_New_Roman.html
 \usepackage{courier}
 \usepackage{amsmath}
@@ -414,6 +420,10 @@
 
 % Einbinden von PDFs (für den KI Anhang)
 \usepackage{pdfpages}
+
+%Prüfen ob die Aussrichtung aller inhalte einheitlich im Format des Dokumentes ist (die nächsten 2 Zeilen auskommentieren)
+%\usepackage{showframe}
+%\usepackage[showboxes]{textpos}
 
 %-----------------------------------
 % Start the document here:

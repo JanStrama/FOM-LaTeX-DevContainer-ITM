@@ -4,7 +4,7 @@
 # Quellverzeichnis: fluechtige_quellen/ki_prompt/
 # Zielverzeichnis: abbildungen/ki_belege/
 
-set -e  # Bei Fehlern abbrechen
+# set -e  # Bei Fehlern abbrechen (deaktiviert für bessere Fehlerbehandlung)
 
 # Verzeichnisse definieren
 SOURCE_DIR="fluechtige_quellen/ki_prompt"
@@ -138,7 +138,9 @@ convert_html_to_pdf() {
 log "Suche nach Dateien in '$SOURCE_DIR'..."
 
 # Finde alle .md und .html Dateien
-find "$SOURCE_DIR" -type f \( -name "*.md" -o -name "*.html" \) | while read -r file; do
+find "$SOURCE_DIR" -type f \( -name "*.md" -o -name "*.html" \) > /tmp/files_to_convert.$$
+
+while IFS= read -r file; do
     filename=$(basename "$file")
     extension="${filename##*.}"
     normalized_name=$(normalize_filename "$filename")
@@ -169,7 +171,10 @@ find "$SOURCE_DIR" -type f \( -name "*.md" -o -name "*.html" \) | while read -r 
             warn "Nicht unterstützter Dateityp: $extension"
             ;;
     esac
-done
+done < /tmp/files_to_convert.$$
+
+# Temporäre Datei löschen
+rm -f /tmp/files_to_convert.$$
 
 # Zusammenfassung
 log "=========================================="
