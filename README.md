@@ -35,7 +35,8 @@ Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbe
 - Vollständige Entwicklungsumgebung in [`.devcontainer/`](./.devcontainer/)
 - VS Code mit LaTeX Workshop, LTeX-Grammatikprüfung und Git-Integration
 - Standardisierte Arbeitsumgebung ohne lokale LaTeX-Installation
->[!IMPORTANT] zum korrekten Build des Dev Containers kopiert die ".env.example" Datei und benennt sie zu ".env" um, passt danach die GIT Daten in der .env an eure GIT Infos an
+>[!IMPORTANT]
+>zum korrekten Build des Dev Containers kopiert die ".env.example" Datei und benennt sie zu ".env" um, passt danach die GIT Daten in der .env an eure GIT Infos an
 
 ### 5. KI-Nachweis-Ordner
 - [`abbildungen/ki_belege/`](./abbildungen/ki_belege/) für Screenshots und PDF-Nachweise
