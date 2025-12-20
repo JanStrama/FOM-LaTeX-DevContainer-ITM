@@ -1,6 +1,7 @@
 # LaTeX-Vorlage für die FOM Hochschule für Oekonomie & Management
 
-**Diese erweiterte Vorlage basiert auf dem hervorragenden Foundation-Work von [Andy Grünwald](https://github.com/andygrunwald/FOM-LaTeX-Template) und integriert wertvolle AI-Bibliographie-Anpassungen aus der Community von [FOM-MUC-unofficial](https://github.com/FOM-MUC-unofficial/FOM-LaTeX-Template) sowie [MucPeet](https://github.com/MucPeet/FOM-LaTeX-Template).**
+**Diese erweiterte Vorlage basiert auf der Arbeit von [Andy Grünwald](https://github.com/andygrunwald/FOM-LaTeX-Template) und integriert 
+die AI-Bibliographie-Anpassungen aus der Community von [FOM-MUC-unofficial](https://github.com/FOM-MUC-unofficial/FOM-LaTeX-Template) sowie [MucPeet](https://github.com/MucPeet/FOM-LaTeX-Template).**
 
 Eine [LaTeX](https://de.wikipedia.org/wiki/LaTeX)-Vorlage für den persönlichen Gebrauch für Haus-, Seminar-, Bachelor und Master-Arbeiten an der [FOM Hochschule für Oekonomie & Management](https://www.fom.de/).
 
@@ -34,6 +35,7 @@ Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbe
 - Vollständige Entwicklungsumgebung in [`.devcontainer/`](./.devcontainer/)
 - VS Code mit LaTeX Workshop, LTeX-Grammatikprüfung und Git-Integration
 - Standardisierte Arbeitsumgebung ohne lokale LaTeX-Installation
+>[!IMPORTANT] zum korrekten Build des Dev Containers kopiert die ".env.example" Datei und benennt sie zu ".env" um, passt danach die GIT Daten in der .env an eure GIT Infos an
 
 ### 5. KI-Nachweis-Ordner
 - [`abbildungen/ki_belege/`](./abbildungen/ki_belege/) für Screenshots und PDF-Nachweise
