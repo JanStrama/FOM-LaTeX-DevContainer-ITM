@@ -28,7 +28,6 @@
    \ifde\selectlanguage{ngerman}#1\fi}
 \newcommand{\langen}[1]{%
    \ifen\selectlanguage{english}#1\fi}
-\usepackage[utf8]{luainputenc}
 \langde{\usepackage[babel,german=quotes]{csquotes}}
 \langen{\usepackage[babel,english=british]{csquotes}}
 \ifde\usepackage[ngerman]{babel}\fi
@@ -52,7 +51,7 @@
 \usepackage{enumitem}
 \usepackage{amssymb}
 \usepackage{mathptmx}
-\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
+%\usepackage{minted} %Kann für schöneres Syntax Highlighting genutzt werden. ACHTUNG: Python muss installiert sein.
 
 \newenvironment{chat}{
     \begin{quote}\ttfamily\small
@@ -144,18 +143,29 @@
 \usepackage{url}
 \urlstyle{same}
 \newcommand{\citationstyle}{ieee} % Mögliche Werte: ieee, fom_2018, fom_alt
+% Fallback-Style, falls biblatex-Stile fehlen
+\newcommand{\biblatexfallbackstyle}{numeric}
 % Laden des entsprechenden Zitationsstils basierend auf der Variable \citationstyle
 \ifthenelse{\equal{\citationstyle}{ieee}}{
     % Einstellungen für IEEE-Zitationsstil
+    % Falls ieee.bbx/ieee.cbx fehlen, auf numeric zurückfallen.
+    \IfFileExists{ieee.bbx}{%
+        \IfFileExists{ieee.cbx}{%
+            \def\biblatexstyle{ieee}%
+        }{%
+            \def\biblatexstyle{\biblatexfallbackstyle}%
+        }%
+    }{%
+        \def\biblatexstyle{\biblatexfallbackstyle}%
+    }%
 	\usepackage[
 		backend=biber,
-		style=ieee,
+		style=\biblatexstyle,
 		maxcitenames=3,	% mindestens 3 Namen ausgeben bevor et. al. kommt
 		maxbibnames=999,
 		date=iso,
 		seconds=true, %werden nicht verwendet, so werden aber Warnungen unterdrückt.
 		urldate=iso,
-		dashed=false,
 		autocite=inline,
 		useprefix=true, % 'von' im Namen beachten (beim Anzeigen)
 		mincrossrefs = 1
@@ -281,6 +291,7 @@
 
 %Bib-Datei einbinden
 \addbibresource{literatur/literatur.bib}
+\BiblatexSplitbibDefernumbersWarningOff
 
 % Zeilenabstand im Literaturverzeichnis ist Einzeilig
 % siehe Leitfaden S. 14

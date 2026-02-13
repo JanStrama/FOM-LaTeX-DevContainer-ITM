@@ -11,7 +11,9 @@ RUN apt-get update \
 		texlive-lang-german \
 		texlive-plain-generic \
 		texlive-luatex \
+		texlive-extra-utils \
 		biber \
+		latexmk \
 		xz-utils \
 		python3 \
 		python3-pygments \
