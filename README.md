@@ -12,6 +12,14 @@ Verbesserungen sind jederzeit willkommen (siehe [Ich möchte mithelfen, diese Vo
 
 ---
 
+## Schnellstart
+
+1. Dev Container (empfohlen): Projekt in VS Code öffnen, "Reopen in Container" ausführen, danach `./compile.sh`.
+2. Lokal mit installierter Toolchain: `./compile.sh`.
+3. Docker: `docker-compose up`.
+
+---
+
 ## Unterschiede zur Original-Vorlage
 
 Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbeiten, IT-Management & Ingenieurwesen (Stand 03/24)" und nutzt das IEEE-Zitationsformat. Die wichtigsten Unterschiede zur Original-Vorlage sind:
@@ -41,6 +49,8 @@ Diese Version implementiert den aktuellen "Leitfaden für wissenschaftliche Arbe
 ### 5. KI-Nachweis-Ordner
 - [`abbildungen/ki_belege/`](./abbildungen/ki_belege/) für Screenshots und PDF-Nachweise
 - [`fluechtige_quellen/ki_prompt/`](./fluechtige_quellen/ki_prompt/) für Prompt-Dokumentation
+- [`literatur/fluechtige_quellen/ki_chats/`](./literatur/fluechtige_quellen/ki_chats/) für archivierte KI-Chat-Protokolle
+- [`literatur/fluechtige_quellen/convert_session.py`](./literatur/fluechtige_quellen/convert_session.py) für JSON/JSONL-Konvertierung
 - Automatisierte Konvertierung durch [`convert_to_pdf.sh`](./convert_to_pdf.sh)
 
 ### 6. Exporter-Plugin-Empfehlungen
@@ -53,11 +63,11 @@ Die folgenden Plugins für Firefox haben sich als recht gut im export der Chathi
 
 ## KI Nutzungs-Flow
 
-KI Einsatz --> Download und Speichern im ./fluechtige_quellen/ki_prompt/ --> convert_to_pdf.sh ausführen (speichert pdf in ./abbildungen/ki_belege/)  --> KI einsatz in literatur.bib und KI Anhang aufführen (siehe Beispieldaten im pdf und tex files)
+KI-Einsatz -> Export speichern (`fluechtige_quellen/ki_prompt/` oder `literatur/fluechtige_quellen/ki_chats/`) -> optional konvertieren (`./convert_to_pdf.sh` oder `convert_session.py`) -> Nachweis in `literatur/literatur.bib` -> Verweis im KI-Anhang.
 
 ---
 
-## Inhaltsverzeichnis 8aus dem Original Repo)
+## Inhaltsverzeichnis
 
 1. [Für die eigene Arbeit nutzen](#für-die-eigene-arbeit-nutzen)
     1. [Klassischer Download](#klassischer-download)
@@ -171,11 +181,11 @@ TextCommands können bei Bedarf auch zweisprachig gepflegt werden:
 Es gibt viele Zitationsstile, deshalb schaut ihr am besten in den für euch gültigen Leitfaden und sprecht dann die präferierte/vorgegebene Zitationsweise mit eurem Dozenten ab.
 
 Die Vorlage unterstützt verschiedene Zitationsstile, die über die Variable `\citationstyle` in der Datei thesis_main.tex ausgewählt werden können. Mögliche Werte sind `ieee`, `fom_2018` und `fom_alt`. Stellt sicher, dass der Wert der Variable korrekt gesetzt ist, um den gewünschten Zitationsstil zu aktivieren.
-Sucht nach der Zeile `\newcommand{\citationstyle}{fom_2018}` im thesis_main.tex um Anpassungen wie folgt vorzunehmen
+Sucht nach der Zeile `\newcommand{\citationstyle}{ieee}` in der thesis_main.tex, um Anpassungen wie folgt vorzunehmen.
 
-Aktivieren des Zitationssils für den neuen (2018) FOM Leitfaden (per Default aktiv):
+Aktivieren des Zitationsstils für den neuen (2018) FOM Leitfaden:
 ```
-\newcommand{\citationstyle}{fom_2018}  <- dies ist der Default, hier muss nichts geändert werden!
+\newcommand{\citationstyle}{fom_2018}
 ```
 
 Aktivieren des Zitationssils für den alten FOM Leitfaden wie folgt:
@@ -369,8 +379,8 @@ Für die effiziente Dokumentation von KI-Sessions werden folgende Browser-Extens
 1. Installiere die entsprechende Extension in deinem Browser
 2. Führe die KI-Session durch
 3. Exportiere die Session nach Abschluss
-4. Speichere die Export-Datei in `fluechtige_quellen/ki_prompt/`
-5. Führe `./convert_to_pdf.sh` aus für die Konvertierung
+4. Speichere die Export-Datei in `fluechtige_quellen/ki_prompt/` oder `literatur/fluechtige_quellen/ki_chats/`
+5. Führe `./convert_to_pdf.sh` oder `python3 literatur/fluechtige_quellen/convert_session.py --input <export.jsonl> --output literatur/fluechtige_quellen/ki_chats --to-pdf` für die Konvertierung aus
 6. Füge den Nachweis im KI-Anhang hinzu
 
 ### Ordnerstruktur
@@ -384,6 +394,10 @@ Für die effiziente Dokumentation von KI-Sessions werden folgende Browser-Extens
 - Temporäre Speicherung von Prompt-Dokumentationen
 - Markdown- und HTML-Dateien von KI-Exportern
 - Quelle für die automatische PDF-Konvertierung
+
+**[`literatur/fluechtige_quellen/ki_chats/`](./literatur/fluechtige_quellen/ki_chats/)**
+- Ablage für versionierte, zitierbare Chat-Protokolle
+- Zielordner für `convert_session.py`
 
 ### Automatische Konvertierung
 
@@ -622,7 +636,7 @@ Wer eine etwas moderne IDE benutzen möchte, kann auch Visual Studio Code verwen
 
 [Latex Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)
 
-Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der ```settings.json``` sind die Einstellungen der ```compile.sh``` für Latex Workshop hinterlegt.
+Mit Hilfe der Extension kann das Projekt kompiliert und als Vorschau angesehen werden. In der `settings.json` sind die Latex-Workshop-Einstellungen für den Build-Flow hinterlegt.
 
 Zusätzlich kann die Extension [LTeX](https://marketplace.visualstudio.com/items?itemName=valentjn.vscode-ltex) hilfreich sein, die eine **offline Grammatik- und Rechtschreibprüfung** für LaTeX-Dokumente bietet.
 
@@ -647,6 +661,8 @@ Gerade bei der Verwendung eines Texteditors ist das Zählen der Wörter unter um
 Unter Unix und macOS kann das mitgelieferte Script helfen die Wörter zu zählen. Dafür muss nur [detex](https://github.com/pkubowicz/opendetex) installiert werden. Unter macOS kann `detex` mittels [homebrew](https://brew.sh/index_de) über den Befehl `brew install opendetex` installiert werden.
 
 Das Skript wird einfach über `sh ./countwords.sh` gestartet.
+
+Für eine detaillierte Auswertung pro Abschnitt kann alternativ `./countwords_extended.sh` genutzt werden (erzeugt `wordcount.md` über `texcount` + `pandoc`).
 
 ### Overleaf
 
