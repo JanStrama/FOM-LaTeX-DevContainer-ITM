@@ -25,6 +25,9 @@
 # IDEs
 .texpadtmp/
 
+# exclude generated Thesis PDF
+thesis_main.pdf
+
 # Git credentials and config
 .git-credentials
 .gitconfig
